@@ -5,7 +5,9 @@
     <div><%= "Office Floor: #{office.floor}" %></div>
 
     <%end%>
+<h3>All Employees:</h3>
 <% @company.employees.each do |employee| %>
-   <div> <%= "Employee: #{employee.name}" %> </div>
+   <div> <%= employee.name %> </div>
    <% end %>
     
+<%= link_to "Enter New Employee", new_employee_path(@company)%>
