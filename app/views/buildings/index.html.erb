@@ -1,0 +1,7 @@
+<h1> All Buildings </h1>
+
+<% @buildings.each do |building| %>
+    
+    <h3> <%= link_to building.name, building_path(building)  %> </h3>
+   <div> <%= " Available Floors: #{building.number_of_floors_available.join(", ")}" %> </div>
+    <%end %>
