@@ -13,4 +13,8 @@
 <%= link_to "Enter New Employee", new_employee_path(@company)%>
 <%= link_to "Delete an Employee", delete_form_path %>
 
-
+<% sum = 0 %>
+<% @company.buildings.each do |building| %>
+   <%  sum += building.rent_per_floor %> 
+<%end%>
+<div><%=  sum %></div>

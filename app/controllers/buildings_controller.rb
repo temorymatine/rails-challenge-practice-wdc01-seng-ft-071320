@@ -14,8 +14,15 @@ class BuildingsController < ApplicationController
     def update
         @building = Building.find(params[:id])
         @building.update(building_params)
-        redirect_to building_path(@building)
+        
+        if @building.valid?
+            @building.save
+            redirect_to building_path(@building)
+          else
+            render :edit
+          end
     end
+
 
     private 
     

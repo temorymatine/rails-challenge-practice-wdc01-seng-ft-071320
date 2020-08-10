@@ -6,8 +6,14 @@ class EmployeesController < ApplicationController
     end
 
     def create
-        @employee = Employee.create(employee_params)
-        redirect_to company_path(@employee.company)
+        @employee = Employee.new(employee_params)
+    
+        if @employee.valid?
+          @employee.save
+          redirect_to employee_path(@employee)
+        else
+          render :new
+        end
     end
 
     def delete_form
@@ -20,6 +26,8 @@ class EmployeesController < ApplicationController
         employee.destroy
         redirect_to company_path(company)
     end
+
+
 
     private
 
