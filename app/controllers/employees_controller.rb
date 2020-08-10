@@ -6,9 +6,19 @@ class EmployeesController < ApplicationController
     end
 
     def create
-        @employee = Employee.find(params[:id])
-        @employee.create(employee_params)
+        @employee = Employee.create(employee_params)
         redirect_to company_path(@employee.company)
+    end
+
+    def delete_form
+    end
+
+    def destroy
+        id = params[:employee_id].to_i
+        employee = Employee.find(id)
+        company = employee.company
+        employee.destroy
+        redirect_to company_path(company)
     end
 
     private
